@@ -43,7 +43,7 @@ void GoalUndo::undoOperation(std::string undoOp)
 	{
 		std::vector<std::string>::iterator iter;
 
-		for(iter=goals.top().operations.end(); 
+		for(iter=goals.top().operations.end()-1; 
 			iter > goals.top().operations.begin();
 			--iter )
 		{
@@ -80,15 +80,15 @@ std::string GoalUndo::getOperations()
 	{
 		std::string allOps = "";
 		std::vector <std::string> listOps = goals.top().operations;
-		
+
 		std::vector<std::string>::iterator iter;
-		for( iter=goals.top().operations.begin(); 
+		for( iter=goals.top().operations.begin();
 			 iter < goals.top().operations.end();
 			 iter++ )
 		{
 			allOps += *iter;
 			//add space between each operation (but not last)
-			if( iter < goals.top().operations.cend()-1 ) 
+			if( iter < goals.top().operations.cend()-1 )
 				allOps += " ";
 		}
 		return allOps;
